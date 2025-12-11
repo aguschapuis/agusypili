@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Agus & Pili - Nuestro Casamiento</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Nunito+Sans:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: "Nunito Sans", system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
+      }
+
+      .font-heading {
+        font-family: "Cormorant Garamond", "Times New Roman", serif;
+      }
+
+      /* Animaciones suaves */
+      .js-animate {
+        opacity: 0;
+        transform: translateY(12px);
+        transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+      }
+
+      .js-animate.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Scroll snap por pantallas */
+      .snap-container {
+        height: 100vh;
+        overflow-y: scroll;
+        scroll-snap-type: y mandatory;
+      }
+
+      .snap-section {
+        scroll-snap-align: start;
+      }
+    </style>
+  </head>
+
+  <body class="bg-[#F8F2DC] text-slate-900">
+    <!-- NAV FIJO -->
+    <header
+      class="fixed top-0 left-0 right-0 z-20 bg-[#EADFC7]/95 backdrop-blur shadow-sm"
+    >
+      <div class="px-4 py-3 flex items-center justify-between">
+        <div class="font-heading text-2xl font-semibold tracking-wide text-[#5C4630]">
+          Agus &amp; Pili
+        </div>
+
+        <!-- Nav desktop -->
+        <nav class="text-sm md:text-base space-x-4 hidden sm:block">
+          <a href="#cuenta" class="hover:text-[#9A6F49] text-[#B3845A]"
+            >Cuenta regresiva</a
+          >
+          <a href="#evento" class="hover:text-[#9A6F49] text-[#B3845A]"
+            >El evento</a
+          >
+          <a href="#confirmar" class="hover:text-[#9A6F49] text-[#B3845A]"
+            >Confirmar</a
+          >
+          <a href="#info" class="hover:text-[#9A6F49] text-[#B3845A]">Info</a>
+        </nav>
+
+        <!-- Botón mobile -->
+        <button
+          id="openMobileMenu"
+          class="sm:hidden text-[#5C4630] text-2xl leading-none"
+          aria-label="Abrir menú"
+        >
+          ☰
+        </button>
+      </div>
+    </header>
+
+    <!-- Drawer mobile -->
+    <div id="mobileMenu" class="fixed inset-0 bg-black/40 z-30 hidden">
+      <div
+        class="absolute top-0 right-0 bottom-0 w-64 bg-[#F8F2DC] shadow-lg p-6 flex flex-col gap-4"
+      >
+        <div class="flex items-center justify-between mb-4">
+          <span class="font-heading text-xl text-[#5C4630]">Menú</span>
+          <button
+            id="closeMobileMenu"
+            class="text-2xl text-[#5C4630]"
+            aria-label="Cerrar menú"
+          >
+            ✕
+          </button>
+        </div>
+        <a
+          href="#cuenta"
+          class="py-2 text-[#B3845A] hover:text-[#9A6F49] border-b border-[#E0D4B8]"
+          data-menu-link
+          >Cuenta regresiva</a
+        >
+        <a
+          href="#evento"
+          class="py-2 text-[#B3845A] hover:text-[#9A6F49] border-b border-[#E0D4B8]"
+          data-menu-link
+          >El evento</a
+        >
+        <a
+          href="#tarjeta"
+          class="py-2 text-[#B3845A] hover:text-[#9A6F49] border-b border-[#E0D4B8]"
+          data-menu-link
+          >Tarjeta</a
+        >
+        <a
+          href="#confirmar"
+          class="py-2 text-[#B3845A] hover:text-[#9A6F49] border-b border-[#E0D4B8]"
+          data-menu-link
+          >Confirmar</a
+        >
+        <a
+          href="#info"
+          class="py-2 text-[#B3845A] hover:text-[#9A6F49]"
+          data-menu-link
+          >Información</a
+        >
+      </div>
+    </div>
+
+    <!-- CONTENEDOR CON SCROLL SNAP -->
+    <main class="pt-0 snap-container">
+      <!-- HERO FULL SCREEN CON CARRUSEL -->
+      <section class="relative min-h-screen w-full js-animate snap-section">
+        <!-- Slides a pantalla completa -->
+        <img
+          src="img2.jpeg"
+          alt="Agus y Pili 1"
+          class="hero-slide absolute inset-0 w-full h-full object-cover"
+        />
+        <img
+          src="img1.jpeg"
+          alt="Agus y Pili 2"
+          class="hero-slide absolute inset-0 w-full h-full object-cover hidden"
+        />
+        <img
+          src="img3.jpeg"
+          alt="Agus y Pili 3"
+          class="hero-slide absolute inset-0 w-full h-full object-cover hidden"
+        />
+
+        <!-- overlay de color suave -->
+        <div class="absolute inset-0 bg-black/40 mix-blend-multiply"></div>
+
+        <!-- Contenido centrado -->
+        <div
+          class="relative z-10 min-h-screen flex flex-col items-center justify-center text-center px-4"
+        >
+          <p
+            class="uppercase tracking-[0.25em] text-xs md:text-sm text-[#F8F2DC]/90 mb-3"
+          >
+            Nos casamos
+          </p>
+          <h1
+            class="text-5xl md:text-6xl font-heading font-semibold mb-4 text-[#F8F2DC]"
+          >
+            Agus &amp; Pili
+          </h1>
+          <p class="text-[#F8F2DC]/90 text-base md:text-lg mb-8">
+            28 de marzo de 2026 · Santa Bárbara
+          </p>
+
+          <button
+            onclick="document.getElementById('evento').scrollIntoView({ behavior: 'smooth' })"
+            class="inline-flex items-center px-10 py-3 rounded-full bg-[#B3845A] text-white text-base font-medium shadow-lg hover:bg-[#9A6F49] transition"
+          >
+            Ver detalles
+          </button>
+        </div>
+
+        <!-- Dots del carousel -->
+        <div
+          class="absolute bottom-6 inset-x-0 flex justify-center gap-2 z-10"
+        >
+          <button
+            class="hero-dot w-2 h-2 rounded-full bg-white/80 border border-white"
+            data-index="0"
+          ></button>
+          <button
+            class="hero-dot w-2 h-2 rounded-full bg-white/40 border border-white/60"
+            data-index="1"
+          ></button>
+          <button
+            class="hero-dot w-2 h-2 rounded-full bg-white/40 border border-white/60"
+            data-index="2"
+          ></button>
+        </div>
+      </section>
+
+      <!-- CUENTA REGRESIVA -->
+      <section
+        id="cuenta"
+        class="max-w-5xl mx-auto px-4 py-10 border-t border-[#B1C77F] min-h-screen flex flex-col items-center justify-center js-animate snap-section"
+      >
+        <div class="w-full max-w-3xl mx-auto text-center">
+          <h2
+            class="text-3xl md:text-4xl font-heading font-semibold mb-5 tracking-wide text-[#5C4630]"
+          >
+            Cuenta regresiva
+          </h2>
+          <p class="text-base md:text-lg text-slate-700 mb-10">
+            Falta cada vez menos para celebrar juntos ✨
+          </p>
+
+          <!-- Contadores en una sola línea, más grandes en desktop -->
+          <div class="flex justify-center gap-2 sm:gap-4">
+            <div class="text-center">
+              <div
+                id="days"
+                class="text-4xl md:text-5xl font-semibold bg-white rounded-xl px-5 py-5 shadow text-[#B3845A] min-w-[80px]"
+              >
+                0
+              </div>
+              <p
+                class="mt-2 text-xs md:text-sm uppercase tracking-wide text-slate-600"
+              >
+                Días
+              </p>
+            </div>
+
+            <div class="text-center">
+              <div
+                id="hours"
+                class="text-4xl md:text-5xl font-semibold bg-white rounded-xl px-5 py-5 shadow text-[#B3845A] min-w-[80px]"
+              >
+                0
+              </div>
+              <p
+                class="mt-2 text-xs md:text-sm uppercase tracking-wide text-slate-600"
+              >
+                Horas
+              </p>
+            </div>
+
+            <div class="text-center">
+              <div
+                id="minutes"
+                class="text-4xl md:text-5xl font-semibold bg-white rounded-xl px-5 py-5 shadow text-[#B3845A] min-w-[80px]"
+              >
+                0
+              </div>
+              <p
+                class="mt-2 text-xs md:text-sm uppercase tracking-wide text-slate-600"
+              >
+                Minutos
+              </p>
+            </div>
+
+            <div class="text-center">
+              <div
+                id="seconds"
+                class="text-4xl md:text-5xl font-semibold bg-white rounded-xl px-5 py-5 shadow text-[#B3845A] min-w-[80px]"
+              >
+                0
+              </div>
+              <p
+                class="mt-2 text-xs md:text-sm uppercase tracking-wide text-slate-600"
+              >
+                Segundos
+              </p>
+            </div>
+          </div>
+
+          <div class="mt-10">
+            <button
+              class="text-base underline text-[#B3845A] hover:text-[#9A6F49]"
+              onclick="window.open('https://calendar.google.com/calendar/render?action=TEMPLATE&text=Casamiento%20Agus%20y%20Pili&details=Casamiento%20Agus%20y%20Pili%20en%20Santa%20B%C3%A1rbara&location=Santa%20B%C3%A1rbara&dates=20260328T220000Z/20260329T060000Z','_blank')"
+            >
+              Agendar fecha
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- EL EVENTO -->
+      <section
+        id="evento"
+        class="max-w-5xl mx-auto px-4 py-10 border-t border-[#B1C77F] min-h-screen flex flex-col items-center justify-center js-animate snap-section"
+      >
+        <div class="w-full max-w-3xl mx-auto text-center">
+          <h2
+            class="text-3xl md:text-4xl font-heading font-semibold mb-5 tracking-wide text-[#5C4630]"
+          >
+            El Evento
+          </h2>
+          <p class="text-base md:text-lg text-slate-700 mb-10">
+            Te esperamos para compartir este día único con nosotros.
+          </p>
+
+          <div
+            class="bg-white rounded-3xl shadow-md p-6 md:p-8 border border-[#B1C77F] max-w-xl mx-auto"
+          >
+            <h3 class="font-heading font-semibold mb-3 text-[#B3845A] text-2xl">
+              Fiesta
+            </h3>
+            <p class="text-base md:text-lg text-slate-700 mb-2">
+              19:00 hs
+            </p>
+            <p class="text-base text-slate-700 leading-relaxed mb-2">
+              Santa Bárbara · Córdoba
+            </p>
+            <button
+              class="mt-4 inline-flex text-sm px-5 py-2 rounded-full border border-[#B1C77F] text-[#B1C77F] hover:bg-[#EAF3D8] transition"
+              onclick="window.open('https://maps.app.goo.gl/A7B6bxuwGwBJFSW86','_blank')"
+            >
+              Ver en Maps
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- TARJETA -->
+      <section
+        id="tarjeta"
+        class="max-w-5xl mx-auto px-4 py-10 border-t border-[#B1C77F] min-h-screen flex flex-col items-center justify-center js-animate snap-section"
+      >
+        <div class="w-full max-w-3xl mx-auto text-center">
+          <h2
+            class="text-3xl md:text-4xl font-heading font-semibold mb-5 tracking-wide text-[#5C4630]"
+          >
+            Tarjeta
+          </h2>
+          <p class="text-base md:text-lg text-slate-700 mb-4 leading-relaxed">
+            El valor de la tarjeta es de
+            <span class="font-semibold">$92.000</span> para adultos y
+            <span class="font-semibold">$47.000</span> para menores.
+          </p>
+          <p class="text-base md:text-lg text-slate-700 leading-relaxed">
+            Podés abonarla hasta el
+            <span class="font-semibold">10 de marzo de 2026</span>.  
+            Si necesitás coordinar forma de pago, escribinos y lo vemos juntos 💌
+          </p>
+        </div>
+      </section>
+
+      <!-- CONFIRMAR ASISTENCIA -->
+      <section
+        id="confirmar"
+        class="max-w-5xl mx-auto px-4 py-10 border-t border-[#B1C77F] min-h-screen flex flex-col items-center justify-center js-animate snap-section"
+      >
+        <div class="w-full max-w-3xl mx-auto text-center">
+          <h2
+            class="text-3xl md:text-4xl font-heading font-semibold mb-5 tracking-wide text-[#5C4630]"
+          >
+            Confirmar Asistencia
+          </h2>
+          <p class="text-base md:text-lg text-slate-700 mb-6">
+            Para poder organizarnos bien con el salón, el transporte y las
+            tarjetas, te pedimos que nos confirmes lo antes posible.
+          </p>
+          <p class="mb-10 text-slate-800">
+            <span class="font-heading font-semibold text-lg md:text-2xl">
+              Tenés tiempo de confirmar hasta el 23 de diciembre.
+            </span>
+          </p>
+
+          <div class="flex flex-col items-center gap-4">
+            <a
+              href="https://wa.me/5493517735640?text=Hola%20Agus%20y%20Pili,%20confirmo%20mi%20asistencia%20al%20casamiento.%20🙂"
+              target="_blank"
+              class="inline-flex items-center px-10 py-3 rounded-full bg-[#B3845A] text-white text-base font-medium shadow hover:bg-[#9A6F49] transition"
+            >
+              Confirmar por WhatsApp
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- REGALO -->
+      <section
+        id="regalo"
+        class="max-w-5xl mx-auto px-4 py-10 border-t border-[#B1C77F] min-h-screen flex flex-col items-center justify-center js-animate snap-section"
+      >
+        <div class="w-full max-w-3xl mx-auto text-center">
+          <h2
+            class="text-3xl md:text-4xl font-heading font-semibold mb-5 tracking-wide text-[#5C4630]"
+          >
+            Regalo
+          </h2>
+          <p
+            class="text-base md:text-lg text-slate-700 mb-6 max-w-xl mx-auto leading-relaxed"
+          >
+            Tu presencia en nuestro día es el mejor regalo que podemos recibir.  
+            Si además querés hacernos un obsequio, con tu cariño y tus buenos
+            deseos nos alcanza más que suficiente 💕
+          </p>
+        </div>
+      </section>
+
+      <!-- INFORMACIÓN -->
+      <section
+        id="info"
+        class="max-w-5xl mx-auto px-4 py-10 border-t border-[#B1C77F] min-h-screen flex flex-col items-center justify-center js-animate snap-section"
+      >
+        <div class="w-full max-w-3xl mx-auto text-center">
+          <h2
+            class="text-3xl md:text-4xl font-heading font-semibold mb-6 tracking-wide text-[#5C4630]"
+          >
+            Información
+          </h2>
+
+          <div class="space-y-7 text-base md:text-lg text-slate-700">
+            <div>
+              <h3
+                class="font-heading font-semibold mb-2 text-[#B3845A] text-xl md:text-2xl"
+              >
+                Vestimenta
+              </h3>
+              <p>
+                Vestimenta elegante. Vení cómodo para bailar toda la noche 🕺💃
+              </p>
+            </div>
+
+            <div>
+              <h3
+                class="font-heading font-semibold mb-2 text-[#B3845A] text-xl md:text-2xl"
+              >
+                Traslados
+              </h3>
+              <p>
+                Vamos a disponer de dos puntos de salida con transporte hacia
+                Santa Bárbara, para que puedan ir y volver más tranquilos.  
+                Si te interesa sumarte a esta opción, escribinos así te
+                compartimos horarios y lugares de encuentro 🚐
+              </p>
+            </div>
+
+            <div>
+              <h3
+                class="font-heading font-semibold mb-2 text-[#B3845A] text-xl md:text-2xl"
+              >
+                Fotos
+              </h3>
+              <p>
+                Compartí tus fotos usando el hashtag
+                <span class="font-semibold">#AgusYPili2026</span>.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer
+        class="bg-[#B3845A] border-t border-[#8C6540] min-h-screen flex items-center justify-center snap-section"
+      >
+        <div
+          class="max-w-5xl mx-auto px-4 py-6 text-center text-base md:text-lg text-[#F8F2DC]"
+        >
+          <p class="mb-2 font-heading text-3xl">¡Te esperamos! 💗</p>
+          <p>Agus &amp; Pili · 28.03.2026 · Santa Bárbara</p>
+        </div>
+      </footer>
+    </main>
+
+    <!-- JS -->
+    <script>
+      // ===== CUENTA REGRESIVA =====
+      const weddingDate = new Date("2026-03-28T19:00:00-03:00").getTime();
+
+      function updateCountdown() {
+        const now = new Date().getTime();
+        const diff = weddingDate - now;
+
+        if (diff <= 0) return;
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+          (diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        );
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById("days").textContent = days;
+        document.getElementById("hours").textContent = hours;
+        document.getElementById("minutes").textContent = minutes;
+        document.getElementById("seconds").textContent = seconds;
+      }
+
+      setInterval(updateCountdown, 1000);
+      updateCountdown();
+
+      // ===== ANIMACIONES SCROLL =====
+      const animatedEls = document.querySelectorAll(".js-animate");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        {
+          threshold: 0.15,
+        }
+      );
+
+      animatedEls.forEach((el) => observer.observe(el));
+
+      // ===== CAROUSEL HERO =====
+      const slides = document.querySelectorAll(".hero-slide");
+      const dots = document.querySelectorAll(".hero-dot");
+      let currentSlide = 0;
+      let heroInterval = null;
+
+      function showSlide(index) {
+        slides.forEach((slide, i) => {
+          slide.classList.toggle("hidden", i !== index);
+        });
+        dots.forEach((dot, i) => {
+          if (i === index) {
+            dot.classList.remove("bg-white/40");
+            dot.classList.add("bg-white/80");
+          } else {
+            dot.classList.remove("bg-white/80");
+            dot.classList.add("bg-white/40");
+          }
+        });
+        currentSlide = index;
+      }
+
+      function nextSlide() {
+        const next = (currentSlide + 1) % slides.length;
+        showSlide(next);
+      }
+
+      if (slides.length > 0) {
+        showSlide(0);
+        heroInterval = setInterval(nextSlide, 4000);
+      }
+
+      dots.forEach((dot) => {
+        dot.addEventListener("click", () => {
+          const index = Number(dot.dataset.index || 0);
+          showSlide(index);
+          if (heroInterval) clearInterval(heroInterval);
+          heroInterval = setInterval(nextSlide, 4000);
+        });
+      });
+
+      // ===== MOBILE DRAWER =====
+      const mobileMenu = document.getElementById("mobileMenu");
+      const openMobileMenu = document.getElementById("openMobileMenu");
+      const closeMobileMenu = document.getElementById("closeMobileMenu");
+      const drawerLinks = document.querySelectorAll("[data-menu-link]");
+
+      openMobileMenu.addEventListener("click", () => {
+        mobileMenu.classList.remove("hidden");
+      });
+
+      closeMobileMenu.addEventListener("click", () => {
+        mobileMenu.classList.add("hidden");
+      });
+
+      mobileMenu.addEventListener("click", (e) => {
+        if (e.target === mobileMenu) {
+          mobileMenu.classList.add("hidden");
+        }
+      });
+
+      drawerLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("hidden");
+        });
+      });
+    </script>
+  </body>
+</html>
