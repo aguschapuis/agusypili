@@ -95,10 +95,51 @@
           line-height: 2.5rem;
         }
       }
+
+      /* Welcome screen fade */
+      #welcomeScreen {
+        opacity: 1;
+        transition: opacity 600ms ease;
+      }
+      #welcomeScreen.fade-out {
+        opacity: 0;
+        pointer-events: none;
+      }
     </style>
   </head>
 
   <body class="bg-[#F8F2DC] text-slate-900">
+    <audio id="bgMusic" loop>
+      <source src="ordinary_final.mp3" type="audio/mpeg" />
+    </audio>
+
+    <!-- WELCOME SCREEN -->
+    <div
+      id="welcomeScreen"
+      class="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 backdrop-blur"
+    >
+      <div class="text-center px-6">
+        <p
+          class="uppercase tracking-[0.25em] text-xs md:text-sm text-[#F8F2DC]/90 mb-3"
+        >
+          Bienvenidos
+        </p>
+
+        <h2
+          class="font-heading text-4xl md:text-6xl text-[#F8F2DC] mb-6 tracking-wide"
+        >
+          Agus &amp; Pili
+        </h2>
+
+        <button
+          id="btnIngresar"
+          class="inline-flex items-center justify-center px-10 py-3 rounded-full bg-[#B3845A] text-white text-base font-semibold shadow-lg hover:bg-[#9A6F49] transition"
+        >
+          Ingresar
+        </button>
+      </div>
+    </div>
+
     <!-- NAV FIJO -->
     <header
       class="fixed top-0 left-0 right-0 z-20 bg-[#EADFC7]/95 backdrop-blur shadow-sm"
@@ -183,7 +224,10 @@
     </div>
 
     <!-- CONTENEDOR CON SCROLL SNAP -->
-    <main class="pt-0 snap-container">
+    <main
+      id="pageContent"
+      class="pt-0 snap-container overflow-hidden pointer-events-none"
+    >
       <!-- HERO FULL SCREEN CON CARRUSEL -->
       <section class="relative min-h-screen w-full js-animate snap-section">
         <!-- Slides a pantalla completa -->
@@ -598,7 +642,7 @@
 
       if (slides.length > 0) {
         showSlide(0);
-        heroInterval = setInterval(nextSlide, 4000);
+        heroInterval = setInterval(nextSlide, 3000);
       }
 
       dots.forEach((dot) => {
@@ -606,7 +650,7 @@
           const index = Number(dot.dataset.index || 0);
           showSlide(index);
           if (heroInterval) clearInterval(heroInterval);
-          heroInterval = setInterval(nextSlide, 4000);
+          heroInterval = setInterval(nextSlide, 3000);
         });
       });
 
@@ -655,7 +699,38 @@
       // actualizar si cambia el tamaño de la ventana
       window.addEventListener("resize", updateImg1Src);
 
-      lucide.createIcons();
+      // --- LUCIDE SAFE ---
+      if (window.lucide) {
+        lucide.createIcons();
+      } else {
+        console.warn("Lucide no cargó");
+      }
+
+      // ===== WELCOME + MUSIC =====
+      const music = document.getElementById("bgMusic");
+      const welcome = document.getElementById("welcomeScreen");
+      const btnIngresar = document.getElementById("btnIngresar");
+      const pageContent = document.getElementById("pageContent");
+
+      btnIngresar.addEventListener("click", async () => {
+        try {
+          music.volume = 0.4;
+          await music.play(); // ✅ permitido porque es click real
+        } catch (err) {
+          console.warn("No se pudo iniciar música:", err);
+        }
+
+        // habilitar la página
+        pageContent.classList.remove("overflow-hidden", "pointer-events-none");
+
+        // fade out welcome
+        welcome.classList.add("fade-out");
+
+        // al terminar transición, sacarlo del DOM
+        setTimeout(() => {
+          welcome.remove();
+        }, 650);
+      });
     </script>
   </body>
 </html>
