@@ -8,11 +8,17 @@
     <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+
+    <link rel="icon" type="image/png" href="/anillos.jpg" />
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Nunito+Sans:wght@300;400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
 
@@ -22,8 +28,7 @@
       }
 
       body {
-        font-family: "Nunito Sans", system-ui, -apple-system, BlinkMacSystemFont,
-          "Segoe UI", sans-serif;
+        font-family: "Cormorant Garamond", serif;
       }
 
       .font-heading {
@@ -52,6 +57,45 @@
       .snap-section {
         scroll-snap-align: start;
       }
+
+      /* Aumentar un nivel los tamaños de texto (sin tocar títulos) */
+      body .text-sm {
+        font-size: 1rem;
+        line-height: 1.5rem;
+      }
+
+      body .text-base {
+        font-size: 1.125rem;
+        line-height: 1.75rem;
+      }
+
+      body .text-lg {
+        font-size: 1.25rem;
+        line-height: 1.85rem;
+      }
+
+      /* Aumentar tamaños en DESKTOP (sin afectar mobile) */
+      @media (min-width: 768px) {
+        body .text-base {
+          font-size: 1.25rem;
+          line-height: 1.9rem;
+        }
+
+        body .text-lg {
+          font-size: 1.4rem;
+          line-height: 2.1rem;
+        }
+
+        body .text-xl {
+          font-size: 1.65rem;
+          line-height: 2.3rem;
+        }
+
+        body .text-2xl {
+          font-size: 2rem;
+          line-height: 2.5rem;
+        }
+      }
     </style>
   </head>
 
@@ -61,9 +105,17 @@
       class="fixed top-0 left-0 right-0 z-20 bg-[#EADFC7]/95 backdrop-blur shadow-sm"
     >
       <div class="px-4 py-3 flex items-center justify-between">
-        <div class="font-heading text-2xl font-semibold tracking-wide text-[#5C4630]">
-          Agus &amp; Pili
-        </div>
+<div
+  class="font-heading text-2xl font-semibold tracking-wide text-[#5C4630] flex items-center"
+>
+  <img
+    src="anillos.jpg"
+    alt="Anillos"
+    class="w-8 h-8 mr-2 rounded-full object-cover"
+  />
+  Agus &amp; Pili
+</div>
+
 
         <!-- Nav desktop -->
         <nav class="text-sm md:text-base space-x-4 hidden sm:block">
@@ -118,12 +170,6 @@
           >El evento</a
         >
         <a
-          href="#tarjeta"
-          class="py-2 text-[#B3845A] hover:text-[#9A6F49] border-b border-[#E0D4B8]"
-          data-menu-link
-          >Tarjeta</a
-        >
-        <a
           href="#confirmar"
           class="py-2 text-[#B3845A] hover:text-[#9A6F49] border-b border-[#E0D4B8]"
           data-menu-link
@@ -148,19 +194,22 @@
           alt="Agus y Pili 1"
           class="hero-slide absolute inset-0 w-full h-full object-cover"
         />
+
         <img
           src="img1.jpeg"
+          id="img1"
           alt="Agus y Pili 2"
           class="hero-slide absolute inset-0 w-full h-full object-cover hidden"
         />
+
         <img
-          src="img3.jpeg"
+          src="img4.jpeg"
           alt="Agus y Pili 3"
           class="hero-slide absolute inset-0 w-full h-full object-cover hidden"
         />
 
         <!-- overlay de color suave -->
-        <div class="absolute inset-0 bg-black/40 mix-blend-multiply"></div>
+        <div class="absolute inset-0 bg-black/50 mix-blend-multiply"></div>
 
         <!-- Contenido centrado -->
         <div
@@ -182,16 +231,14 @@
 
           <button
             onclick="document.getElementById('evento').scrollIntoView({ behavior: 'smooth' })"
-            class="inline-flex items-center px-10 py-3 rounded-full bg-[#B3845A] text-white text-base font-medium shadow-lg hover:bg-[#9A6F49] transition"
+            class="inline-flex items-center gap-2 px-10 py-3 rounded-full bg-[#B3845A] text-white text-base font-medium shadow-lg hover:bg-[#9A6F49] transition"
           >
             Ver detalles
           </button>
         </div>
 
         <!-- Dots del carousel -->
-        <div
-          class="absolute bottom-6 inset-x-0 flex justify-center gap-2 z-10"
-        >
+        <div class="absolute bottom-6 inset-x-0 flex justify-center gap-2 z-10">
           <button
             class="hero-dot w-2 h-2 rounded-full bg-white/80 border border-white"
             data-index="0"
@@ -283,10 +330,14 @@
 
           <div class="mt-10">
             <button
-              class="text-base underline text-[#B3845A] hover:text-[#9A6F49]"
+              class="inline-flex items-center gap-2 text-base underline text-[#B3845A] hover:text-[#9A6F49]"
               onclick="window.open('https://calendar.google.com/calendar/render?action=TEMPLATE&text=Casamiento%20Agus%20y%20Pili&details=Casamiento%20Agus%20y%20Pili%20en%20Santa%20B%C3%A1rbara&location=Santa%20B%C3%A1rbara&dates=20260328T220000Z/20260329T060000Z','_blank')"
             >
               Agendar fecha
+              <i
+                data-lucide="calendar"
+                class="w-4 h-4 text-[#B3845A] inline-block"
+              ></i>
             </button>
           </div>
         </div>
@@ -310,15 +361,17 @@
           <div
             class="bg-white rounded-3xl shadow-md p-6 md:p-8 border border-[#B1C77F] max-w-xl mx-auto"
           >
-            <h3 class="font-heading font-semibold mb-3 text-[#B3845A] text-2xl">
-              Fiesta
-            </h3>
-            <p class="text-base md:text-lg text-slate-700 mb-2">
+            <p
+              class="text-base text-slate-700 leading-relaxed mt-2 flex items-center justify-center gap-2"
+            >
+              <i data-lucide="map-pin" class="w-5 h-5 text-[#B3845A]"></i>
+              <span>Santa Bárbara · Córdoba</span>
+            </p>
+
+            <p class="text-base md:text-lg text-slate-700 mb-2 mt-2">
               19:00 hs
             </p>
-            <p class="text-base text-slate-700 leading-relaxed mb-2">
-              Santa Bárbara · Córdoba
-            </p>
+
             <button
               class="mt-4 inline-flex text-sm px-5 py-2 rounded-full border border-[#B1C77F] text-[#B1C77F] hover:bg-[#EAF3D8] transition"
               onclick="window.open('https://maps.app.goo.gl/A7B6bxuwGwBJFSW86','_blank')"
@@ -326,30 +379,6 @@
               Ver en Maps
             </button>
           </div>
-        </div>
-      </section>
-
-      <!-- TARJETA -->
-      <section
-        id="tarjeta"
-        class="max-w-5xl mx-auto px-4 py-10 border-t border-[#B1C77F] min-h-screen flex flex-col items-center justify-center js-animate snap-section"
-      >
-        <div class="w-full max-w-3xl mx-auto text-center">
-          <h2
-            class="text-3xl md:text-4xl font-heading font-semibold mb-5 tracking-wide text-[#5C4630]"
-          >
-            Tarjeta
-          </h2>
-          <p class="text-base md:text-lg text-slate-700 mb-4 leading-relaxed">
-            El valor de la tarjeta es de
-            <span class="font-semibold">$92.000</span> para adultos y
-            <span class="font-semibold">$47.000</span> para menores.
-          </p>
-          <p class="text-base md:text-lg text-slate-700 leading-relaxed">
-            Podés abonarla hasta el
-            <span class="font-semibold">10 de marzo de 2026</span>.  
-            Si necesitás coordinar forma de pago, escribinos y lo vemos juntos 💌
-          </p>
         </div>
       </section>
 
@@ -369,8 +398,8 @@
             tarjetas, te pedimos que nos confirmes lo antes posible.
           </p>
           <p class="mb-10 text-slate-800">
-            <span class="font-heading font-semibold text-lg md:text-2xl">
-              Tenés tiempo de confirmar hasta el 23 de diciembre.
+            <span class="font-heading font-semibold text-xl md:text-2xl">
+              Por favor, confirmanos tu asistencia antes del 5 de enero 🫶🏼.
             </span>
           </p>
 
@@ -378,32 +407,11 @@
             <a
               href="https://wa.me/5493517735640?text=Hola%20Agus%20y%20Pili,%20confirmo%20mi%20asistencia%20al%20casamiento.%20🙂"
               target="_blank"
-              class="inline-flex items-center px-10 py-3 rounded-full bg-[#B3845A] text-white text-base font-medium shadow hover:bg-[#9A6F49] transition"
+              class="inline-flex items-center gap-2 px-10 py-3 rounded-full bg-[#B3845A] text-white text-base font-medium shadow hover:bg-[#9A6F49] transition"
             >
               Confirmar por WhatsApp
             </a>
           </div>
-        </div>
-      </section>
-
-      <!-- REGALO -->
-      <section
-        id="regalo"
-        class="max-w-5xl mx-auto px-4 py-10 border-t border-[#B1C77F] min-h-screen flex flex-col items-center justify-center js-animate snap-section"
-      >
-        <div class="w-full max-w-3xl mx-auto text-center">
-          <h2
-            class="text-3xl md:text-4xl font-heading font-semibold mb-5 tracking-wide text-[#5C4630]"
-          >
-            Regalo
-          </h2>
-          <p
-            class="text-base md:text-lg text-slate-700 mb-6 max-w-xl mx-auto leading-relaxed"
-          >
-            Tu presencia en nuestro día es el mejor regalo que podemos recibir.  
-            Si además querés hacernos un obsequio, con tu cariño y tus buenos
-            deseos nos alcanza más que suficiente 💕
-          </p>
         </div>
       </section>
 
@@ -422,34 +430,33 @@
           <div class="space-y-7 text-base md:text-lg text-slate-700">
             <div>
               <h3
-                class="font-heading font-semibold mb-2 text-[#B3845A] text-xl md:text-2xl"
+                class="font-heading font-semibold mb-2 text-[#B3845A] text-2xl md:text-3xl flex items-center justify-center gap-2"
               >
-                Vestimenta
+                <i data-lucide="shirt" class="w-6 h-6 text-[#B3845A]"></i>
+                <span>Dress code</span>
+              </h3>
+              <p>Elegante</p>
+            </div>
+
+            <div>
+              <h3
+                class="font-heading font-semibold mb-2 text-[#B3845A] text-2xl md:text-3xl flex items-center justify-center gap-2"
+              >
+                <i data-lucide="bus" class="w-6 h-6 text-[#B3845A]"></i>
+                <span>Traslados</span>
               </h3>
               <p>
-                Vestimenta elegante. Vení cómodo para bailar toda la noche 🕺💃
+                Si te interesa sumarte a los traslados escribinos para pasarte
+                info y precio.
               </p>
             </div>
 
             <div>
               <h3
-                class="font-heading font-semibold mb-2 text-[#B3845A] text-xl md:text-2xl"
+                class="font-heading font-semibold mb-2 text-[#B3845A] text-2xl md:text-3xl flex items-center justify-center gap-2"
               >
-                Traslados
-              </h3>
-              <p>
-                Vamos a disponer de dos puntos de salida con transporte hacia
-                Santa Bárbara, para que puedan ir y volver más tranquilos.  
-                Si te interesa sumarte a esta opción, escribinos así te
-                compartimos horarios y lugares de encuentro 🚐
-              </p>
-            </div>
-
-            <div>
-              <h3
-                class="font-heading font-semibold mb-2 text-[#B3845A] text-xl md:text-2xl"
-              >
-                Fotos
+                <i data-lucide="camera" class="w-6 h-6 text-[#B3845A]"></i>
+                <span>Fotos</span>
               </h3>
               <p>
                 Compartí tus fotos usando el hashtag
@@ -460,6 +467,43 @@
         </div>
       </section>
 
+      <!-- SECCIÓN TE ESPERAMOS -->
+      <section
+        id="te-esperamos"
+        class="relative min-h-screen w-full flex items-center justify-center snap-section js-animate"
+      >
+        <!-- Imagen de fondo -->
+        <img
+          src="img5.JPG"
+          alt="Fondo Te Esperamos"
+          class="absolute inset-0 w-full h-full object-cover md:hidden"
+        />
+
+        <img
+          src="img5desktop.jpg"
+          alt="Fondo Te Esperamos"
+          class="absolute inset-0 w-full h-full object-cover hidden md:block"
+        />
+
+        <!-- Overlay oscurecido -->
+        <div class="absolute inset-0 bg-black/60"></div>
+
+        <!-- Contenido -->
+        <div class="relative z-10 text-center px-6">
+          <h2
+            class="font-heading text-4xl md:text-6xl text-[#F8F2DC] mb-6 tracking-wide"
+          >
+            ¡TE ESPERAMOS!
+          </h2>
+
+          <p
+            class="text-lg md:text-2xl text-[#F8F2DC]/90 max-w-2xl mx-auto leading-relaxed"
+          >
+            Tu presencia es muy importante para nosotros.
+          </p>
+        </div>
+      </section>
+
       <!-- FOOTER -->
       <footer
         class="bg-[#B3845A] border-t border-[#8C6540] min-h-screen flex items-center justify-center snap-section"
@@ -467,8 +511,16 @@
         <div
           class="max-w-5xl mx-auto px-4 py-6 text-center text-base md:text-lg text-[#F8F2DC]"
         >
-          <p class="mb-2 font-heading text-3xl">¡Te esperamos! 💗</p>
-          <p>Agus &amp; Pili · 28.03.2026 · Santa Bárbara</p>
+          <div class="w-[80%] h-px bg-white/50 mx-auto mb-[4rem]"></div>
+
+          <p
+            class="mb-5 font-heading text-5xl flex items-center justify-center gap-3"
+          >
+            AGUS &amp; PILI
+          </p>
+          <p class="mb-5 font-heading text-lg">28.03.2026</p>
+          <p class="text-lg">Santa Barbara</p>
+          <div class="w-[80%] h-px bg-white/50 mx-auto mt-[4rem]"></div>
         </div>
       </footer>
     </main>
@@ -585,6 +637,27 @@
           mobileMenu.classList.add("hidden");
         });
       });
+
+      // ===== IMAGEN RESPONSIVE PARA SLIDE 2 =====
+      function updateImg1Src() {
+        const img1 = document.getElementById("img1");
+        if (!img1) return;
+
+        const isDesktop = window.matchMedia("(min-width: 768px)").matches;
+
+        if (isDesktop) {
+          img1.src = "img1desktop.jpg";
+        } else {
+          img1.src = "img1.jpeg";
+        }
+      }
+
+      // correr al inicio
+      updateImg1Src();
+      // actualizar si cambia el tamaño de la ventana
+      window.addEventListener("resize", updateImg1Src);
+
+      lucide.createIcons();
     </script>
   </body>
 </html>
